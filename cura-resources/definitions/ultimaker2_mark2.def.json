@@ -1,0 +1,224 @@
+{
+    "id": "ultimaker2_mark2",
+    "version": 2,
+    "name": "Ultimaker2 Mark2",
+    "inherits": "ultimaker2_plus",
+    "metadata": {
+        "visible": true,
+        "author": "Ultimaker",
+        "manufacturer": "Ultimaker",
+        "category": "Ultimaker",
+		"quality_definition": "ultimaker2_plus",
+        "weight": 1,
+        "file_formats": "text/x-gcode",
+        "icon": "icon_ultimaker.png",
+        "platform": "ultimaker2_platform.obj",
+        "platform_texture": "Ultimaker2Mark2backplate.png",
+        "machine_extruder_trains":
+        {
+            "0": "ultimaker2_extruder1",
+            "1": "ultimaker2_extruder2"
+        },
+        "supported_actions": ["MachineSettingsAction", "UpgradeFirmware"]
+    },
+    "overrides": {
+        "machine_name": { "default_value": "Ultimaker2 Mark2" },
+        "machine_width": {
+            "default_value": 223
+        },
+        "machine_depth": {
+            "default_value": 223
+        },
+        "machine_height": {
+            "default_value": 203
+        },
+        "gantry_height": {
+            "default_value": 52
+        },
+        "machine_center_is_zero": {
+            "default_value": false
+        },
+        "machine_nozzle_size": {
+            "default_value": 0.4
+        },
+        "machine_nozzle_heat_up_speed": {
+            "default_value": 3.5
+        },
+        "machine_nozzle_cool_down_speed": {
+            "default_value": 1.5
+        },
+        "machine_min_cool_heat_time_window":
+        {
+            "default_value": 15.0
+        },
+        "machine_show_variants": {
+            "default_value": true
+        },
+        "machine_nozzle_head_distance": {
+            "default_value": 5
+        },
+        "machine_nozzle_expansion_angle": {
+            "default_value": 45
+        },
+        "machine_heat_zone_length": {
+            "default_value": 20
+        },
+        "machine_heated_bed": {
+            "default_value": true
+        },
+        "speed_infill": {
+            "value": "speed_print"
+        },
+        "speed_wall_x": {
+            "value": "speed_wall"
+        },
+        "layer_height_0": {
+            "value": "round(machine_nozzle_size / 1.5, 2)"
+        },
+        "line_width": {
+            "value": "round(machine_nozzle_size * 0.875, 2)"
+        },
+        "speed_layer_0": {
+            "default_value": 20
+        },
+        "speed_support": {
+            "value": "speed_wall_0"
+        },
+        "machine_max_feedrate_x": {
+            "default_value": 250
+        },
+        "machine_max_feedrate_y": {
+            "default_value": 250
+        },
+        "machine_max_feedrate_z": {
+            "default_value": 40
+        },
+        "machine_max_feedrate_e": {
+            "default_value": 45
+        },
+        "machine_acceleration": {
+            "default_value": 3000
+        },
+        "retraction_amount": {
+            "default_value": 5.1
+        },
+        "retraction_speed": {
+            "default_value": 25
+		},
+		"switch_extruder_retraction_amount": {
+		    "default_value": 0,
+			"value": "retraction_amount",
+			"enabled": false
+        },
+		"switch_extruder_retraction_speeds": {
+		    "default_value": 25,
+			"value": "retraction_speed",
+			"enabled": false
+        },
+		"switch_extruder_retraction_speed": {
+		    "default_value": 25,
+			"value": "retraction_retract_speed",
+			"enabled": false
+        },
+		"switch_extruder_prime_speed": {
+		    "default_value": 25,
+			"value": "retraction_prime_speed",
+			"enabled": false
+        },
+        "machine_head_with_fans_polygon":
+        {
+            "default_value": [
+                [ -44, 14 ],
+                [ -44, -34 ],
+                [ 64, 14 ],
+                [ 64, -34 ]
+            ]
+        },
+        "gantry_height": {
+            "default_value": 55
+        },
+        "machine_use_extruder_offset_to_offset_coords": {
+            "default_value": false
+        },
+        "machine_gcode_flavor": {
+            "default_value": "RepRap (Marlin/Sprinter)"
+        },
+        "machine_start_gcode" : {
+            "default_value": "",
+            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"M84\\nG21 ;metric values\\nG90 ;absolute positioning\\nM82 ;set extruder to absolute mode\\nM107 ;start with the fan off\\nM200 D0 T0 ;reset filament diameter\\nM200 D0 T1\\nM204 S2000\\nM205 X12\\nG1 F9000\\nG28\\nT1\\nG0 X123 Y20 F9000\\nG0 Z30.0 F2400 ;move the platform to 30mm\\nG92 E0\\nG1 E16 F300 ;purge nozzle quickly\\nG1 E21 F40 ;purge nozzle slow\\nG92 E0 ;zero the extruded length again\\nG1 E-4.5 F1500\\nG1 X50 Z0.01 F9000 ;pull away filament\\nG1 X22\\nG1 Y40\\nG0 Z5.0 F2400 ;move the platform to 5mm\\nT0\\nG0 X105 Y18 Z30.0 F9000\\nG92 E0\\nG1 E16 F300\\nG1 E21 F40\\nG92 E0\\nG1 E-4.5 F1500\\nG0 X40 Z0.01 F9000 ;pull away filament\\nG0 X15\\nG0 Y40\""
+        },
+        "machine_end_gcode" : {
+            "default_value": "",
+            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"G90 ;absolute positioning\\nM82\\nG92 E12.5 ;additional end-of-print retraction\\nG1 E0 F1200\\nM104 S0 T0 ;extruder heater off\\nM104 S0 T1\\nM140 S0 ;heated bed heater off (if you have it)\\nG28 Z0\\nM84 Z0 ;steppers off\\nM107\\nT0\\nG28 X0 Y0\\nM84\""
+        },
+        "machine_extruder_count": {
+            "default_value": 2
+        },
+		"acceleration_enabled":
+		{
+			"default_value": true
+		},
+		"acceleration_print":
+		{
+			"default_value": 2000,
+			"value": "2000"
+		},
+		"acceleration_travel":
+		{
+			"default_value": 3000,
+			"value": "acceleration_print if magic_spiralize else 3000"
+		},
+        "acceleration_layer_0": { "value": "acceleration_topbottom" },
+        "acceleration_prime_tower": { "value": "math.ceil(acceleration_print * 2000 / 4000)" },
+        "acceleration_support": { "value": "math.ceil(acceleration_print * 2000 / 4000)" },
+        "acceleration_support_interface": { "value": "acceleration_topbottom" },
+        "acceleration_topbottom": { "value": "math.ceil(acceleration_print * 500 / 4000)" },
+        "acceleration_wall": { "value": "math.ceil(acceleration_print * 1000 / 4000)" },
+        "acceleration_wall_0": { "value": "math.ceil(acceleration_wall * 500 / 1000)" },
+		"jerk_enabled":
+		{
+			"default_value": true
+		},
+		"jerk_print":
+		{
+			"default_value": 12
+		},
+		"jerk_travel":
+		{
+			"default_value": 20,
+			"value": "jerk_print if magic_spiralize else 20"
+		},
+        "jerk_layer_0": { "value": "jerk_topbottom" },
+        "jerk_prime_tower": { "value": "math.ceil(jerk_print * 15 / 25)" },
+        "jerk_support": { "value": "math.ceil(jerk_print * 15 / 25)" },
+        "jerk_support_interface": { "value": "jerk_topbottom" },
+        "jerk_topbottom": { "value": "math.ceil(jerk_print * 10 / 25)" },
+        "jerk_wall": { "value": "math.ceil(jerk_print * 15 / 25)" },
+        "jerk_wall_0": { "value": "math.ceil(jerk_wall * 6 / 10)" },
+		"jerk_travel_layer_0": { "value": "math.ceil(jerk_layer_0 * jerk_travel / jerk_print)" },
+        "extruder_prime_pos_abs": { "default_value": false },
+        "machine_extruder_start_pos_abs": { "default_value": false },
+        "machine_extruder_start_pos_x": { "value": 0.0 },
+        "machine_extruder_start_pos_y": { "value": 0.0 },
+        "machine_extruder_end_pos_abs": { "default_value": false },
+        "machine_extruder_end_pos_x": { "value": 0.0 },
+        "machine_extruder_end_pos_y": { "value": 0.0 },
+		"extruder_prime_pos_x": { "default_value": 0.0, "enabled": false },
+        "extruder_prime_pos_y": { "default_value": 0.0, "enabled": false },
+        "extruder_prime_pos_z": { "default_value": 0.0, "enabled": false },
+        "prime_tower_position_x": {
+            "default_value": 185
+        },
+        "prime_tower_position_y": {
+            "default_value": 160
+        },
+        "machine_disallowed_areas": {
+            "default_value": [
+                [[-115,  112.5], [ -10,  112.5], [ -10,  72.5], [-115,  72.5]],
+                [[ 115,  112.5], [ 115,  72.5], [ 15,  72.5], [ 15,  112.5]],
+                [[-115, -112.5], [-115, -87.5], [ 115, -87.5], [ 115, -112.5]],
+				[[-115, 72.5], [-97, 72.5], [-97, -112.5], [-115, -112.5]]
+            ]
+        }
+	}
+}
