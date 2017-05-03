@@ -1,6 +1,6 @@
 
 Mark 2 print head expansion board
-https://github.com/foehnsturm/Mark2
+https://github.com/foehnsturm/Mark2/Mark 2 expansion board/
 CC-BY-SA 3.0
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
