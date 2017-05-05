@@ -1,28 +1,28 @@
 {
-    "id": "ultimaker2_mark2",
+    "id": "Mark2_for_Ultimaker2",
     "version": 2,
-    "name": "Ultimaker2 Mark2",
+    "name": "Mark2 for Ultimaker2",
     "inherits": "ultimaker2_plus",
     "metadata": {
         "visible": true,
-        "author": "Ultimaker",
-        "manufacturer": "Ultimaker",
-        "category": "Ultimaker",
+        "author": "TheUltimakerCommunity",
+        "manufacturer": "Foehnsturm",
+        "category": "Other",
 		"quality_definition": "ultimaker2_plus",
         "weight": 1,
         "file_formats": "text/x-gcode",
         "icon": "icon_ultimaker.png",
         "platform": "ultimaker2_platform.obj",
-        "platform_texture": "Ultimaker2Mark2backplate.png",
+        "platform_texture": "Mark2_for_Ultimaker2_backplate.png",
         "machine_extruder_trains":
         {
-            "0": "ultimaker2_extruder1",
-            "1": "ultimaker2_extruder2"
+            "0": "Mark2_extruder1",
+            "1": "Mark2_extruder2"
         },
         "supported_actions": ["MachineSettingsAction", "UpgradeFirmware"]
     },
     "overrides": {
-        "machine_name": { "default_value": "Ultimaker2 Mark2" },
+        "machine_name": { "default_value": "Mark2_for_Ultimaker2" },
         "machine_width": {
             "default_value": 223
         },
@@ -145,11 +145,11 @@
         },
         "machine_start_gcode" : {
             "default_value": "",
-            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"M84\\nG21 ;metric values\\nG90 ;absolute positioning\\nM82 ;set extruder to absolute mode\\nM107 ;start with the fan off\\nM200 D0 T0 ;reset filament diameter\\nM200 D0 T1\\nM204 S2000\\nM205 X12\\nG1 F9000\\nG28\\nT1\\nG0 X123 Y20 F9000\\nG0 Z30.0 F2400 ;move the platform to 30mm\\nG92 E0\\nG1 E16 F300 ;purge nozzle quickly\\nG1 E21 F40 ;purge nozzle slow\\nG92 E0 ;zero the extruded length again\\nG1 E-4.5 F1500\\nG1 X50 Z0.01 F9000 ;pull away filament\\nG1 X22\\nG1 Y40\\nG0 Z5.0 F2400 ;move the platform to 5mm\\nT0\\nG0 X105 Y18 Z30.0 F9000\\nG92 E0\\nG1 E16 F300\\nG1 E21 F40\\nG92 E0\\nG1 E-4.5 F1500\\nG0 X40 Z0.01 F9000 ;pull away filament\\nG0 X15\\nG0 Y40\""
+			"value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"M84\\nG21 ;metric values\\nG90 ;absolute positioning\\nM82 ;set extruder to absolute mode\\nM107 ;start with the fan off\\nM200 D0 T0 ;reset filament diameter\\nM200 D0 T1\\nG28 ; home all\\nT1 ; move to the 2th head\\nG0 X140 Y25 F9000 ; move to prime position\\nG0 Z20 F2400 ;move the platform to 20mm\\nG92 E0 ; zero the extruder length\\nG1 E35 F225 ;purge nozzle quickly\\nG92 E0 ;zero the extruded length again\\nG1 E-4.5 F1500 ; retract\\nG1 X120 Y25 Z0.01 F5000 ; move away from the prime poop\\nG1 X90 F9000 ; move away from the prime poop\\nG0 Z20 F2400 ;move the platform to 20 mm\\nT0 ; move to the first head\\nG0 X120 Y20 F9000; move to prime position\\nG92 E0\\nG1 E35 F225 ;purge nozzle quickly\\nG92 E0\\nG1 E-4.5 F1500\\nG1 X100 Y20 Z0.01 F5000 ; move away from the prime poop\\nG1 X70 F9000 ; move away from the prime poop\\nG0 Z10 F2400 ;move the platform to 10 mm\""
         },
         "machine_end_gcode" : {
             "default_value": "",
-            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"G90 ;absolute positioning\\nM82\\nG92 E12.5 ;additional end-of-print retraction\\nG1 E0 F1200\\nM104 S0 T0 ;extruder heater off\\nM104 S0 T1\\nM140 S0 ;heated bed heater off (if you have it)\\nG28 Z0\\nM84 Z0 ;steppers off\\nM107\\nT0\\nG28 X0 Y0\\nM84\""
+            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"G90 ;absolute positioning\\nM104 S0 T0 ;extruder heater off\\nM104 S0 T1\\nM140 S0 ;turn off bed\\nT0 ; move to the first head\\nG28 ; home all\\nM84 ;steppers off\\nM107 ; fan off\""
         },
         "machine_extruder_count": {
             "default_value": 2

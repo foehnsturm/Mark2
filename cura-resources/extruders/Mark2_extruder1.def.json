@@ -1,16 +1,16 @@
 {
-    "id": "ultimaker2_extruder2",
+    "id": "Mark2_extruder1",
     "version": 2,
-    "name": "Extruder 2",
+    "name": "Extruder 1",
     "inherits": "fdmextruder",
     "metadata": {
-        "machine": "ultimaker2_mark2",
-        "position": "1"
+        "machine": "Mark2_for_Ultimaker2",
+        "position": "0"
     },
 
     "overrides": {
         "extruder_nr": {
-            "default_value": 1,
+            "default_value": 0,
             "maximum_value": "1"
         },
         "machine_nozzle_offset_x": { "default_value": 0.0 },
