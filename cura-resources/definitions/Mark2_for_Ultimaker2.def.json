@@ -8,7 +8,7 @@
         "author": "TheUltimakerCommunity",
         "manufacturer": "Foehnsturm",
         "category": "Other",
-		"quality_definition": "ultimaker2_plus",
+        "quality_definition": "ultimaker2_plus",
         "weight": 1,
         "file_formats": "text/x-gcode",
         "icon": "icon_ultimaker.png",
@@ -104,26 +104,26 @@
         },
         "retraction_speed": {
             "default_value": 25
-		},
-		"switch_extruder_retraction_amount": {
-		    "default_value": 0,
-			"value": "retraction_amount",
-			"enabled": false
         },
-		"switch_extruder_retraction_speeds": {
-		    "default_value": 25,
-			"value": "retraction_speed",
-			"enabled": false
+        "switch_extruder_retraction_amount": {
+            "default_value": 0,
+            "value": "retraction_amount",
+            "enabled": false
         },
-		"switch_extruder_retraction_speed": {
-		    "default_value": 25,
-			"value": "retraction_retract_speed",
-			"enabled": false
+        "switch_extruder_retraction_speeds": {
+            "default_value": 25,
+            "value": "retraction_speed",
+            "enabled": false
         },
-		"switch_extruder_prime_speed": {
-		    "default_value": 25,
-			"value": "retraction_prime_speed",
-			"enabled": false
+        "switch_extruder_retraction_speed": {
+            "default_value": 25,
+            "value": "retraction_retract_speed",
+            "enabled": false
+        },
+        "switch_extruder_prime_speed": {
+            "default_value": 25,
+            "value": "retraction_prime_speed",
+            "enabled": false
         },
         "machine_head_with_fans_polygon":
         {
@@ -134,9 +134,6 @@
                 [ 64, -34 ]
             ]
         },
-        "gantry_height": {
-            "default_value": 55
-        },
         "machine_use_extruder_offset_to_offset_coords": {
             "default_value": false
         },
@@ -145,29 +142,29 @@
         },
         "machine_start_gcode" : {
             "default_value": "",
-			"value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"M84\\nG21 ;metric values\\nG90 ;absolute positioning\\nM82 ;set extruder to absolute mode\\nM107 ;start with the fan off\\nM200 D0 T0 ;reset filament diameter\\nM200 D0 T1\\nG28 ; home all\\nG0 Z20 F2400 ;move the platform to 20mm\\nT1 ; move to the 2th head\\nG0 X140 Y25 F9000 ; move to prime position\\nG92 E0 ; zero the extruder length\\nG1 E15 F45 ;purge nozzle\\nG92 E0 ;zero the extruded length again\\nG1 E-4.5 F1500 ; retract\\nG1 X120 Y25 Z0.01 F5000 ; move away from the prime poop\\nG1 X90 F9000 ; move away from the prime poop\\nG0 Z20 F2400 ;move the platform to 20 mm\\nT0 ; move to the first head\\nG0 X120 Y25 F9000; move to prime position\\nG92 E0\\nG1 E15 F45 ;purge nozzle\\nG92 E0\\nG1 E-4.5 F1500\\nG1 X100 Y25 Z0.01 F5000 ; move away from the prime poop\\nG1 X70 F9000 ; move away from the prime poop\\nG0 Z10 F2400 ;move the platform to 10 mm\""
+            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"G21 ;metric values\\nG90 ;absolute positioning\\nM82 ;set extruder to absolute mode\\nM107 ;start with the fan off\\nM200 D0 T0 ;reset filament diameter\\nM200 D0 T1\\nG28 Z0; home all\\nG28 X0 Y0\\nG0 Z20 F2400 ;move the platform to 20mm\\nG92 E0 ;zero e-axis\\nT1 ; move to the 2th head\\nG0 Z20 F2400\\nG1 E9 F45 ;purge nozzle\\nG92 E0\\nG1 E-5.0 F1500 ; retract\\nG1 X90 Z0.01 F5000 ; move away from the prime poop\\nG1 X50 F9000 ; move away from the prime poop\\nG0 Z20 F2400\\nT0 ; move to the first head\\nG0 Z20 F2400\\nG92 E0\\nG1 E9 F45 ;purge nozzle\\nG92 E0\\nG1 E-5.0 F1500\\nG1 X60 Z0.01 F5000 ; move away from the prime poop\\nG1 X20 F9000\\nM400 ;finish all moves\\n;end of startup sequence\""
         },
         "machine_end_gcode" : {
             "default_value": "",
-            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"G90 ;absolute positioning\\nM104 S0 T0 ;extruder heater off\\nM104 S0 T1\\nM140 S0 ;turn off bed\\nT0 ; move to the first head\\nG28 ; home all\\nM84 ;steppers off\\nM107 ; fan off\""
+            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"G90 ;absolute positioning\\nM104 S0 T0 ;extruder heater off\\nM104 S0 T1\\nM140 S0 ;turn off bed\\nT0 ; move to the first head\\nM107 ;fan off\""
         },
         "machine_extruder_count": {
             "default_value": 2
         },
-		"acceleration_enabled":
-		{
-			"default_value": true
-		},
-		"acceleration_print":
-		{
-			"default_value": 2000,
-			"value": "2000"
-		},
-		"acceleration_travel":
-		{
-			"default_value": 3000,
-			"value": "acceleration_print if magic_spiralize else 3000"
-		},
+        "acceleration_enabled":
+        {
+            "default_value": true
+        },
+        "acceleration_print":
+        {
+            "default_value": 2000,
+            "value": "2000"
+        },
+        "acceleration_travel":
+        {
+            "default_value": 3000,
+            "value": "acceleration_print if magic_spiralize else 3000"
+        },
         "acceleration_layer_0": { "value": "acceleration_topbottom" },
         "acceleration_prime_tower": { "value": "math.ceil(acceleration_print * 2000 / 4000)" },
         "acceleration_support": { "value": "math.ceil(acceleration_print * 2000 / 4000)" },
@@ -175,19 +172,19 @@
         "acceleration_topbottom": { "value": "math.ceil(acceleration_print * 500 / 4000)" },
         "acceleration_wall": { "value": "math.ceil(acceleration_print * 1000 / 4000)" },
         "acceleration_wall_0": { "value": "math.ceil(acceleration_wall * 500 / 1000)" },
-		"jerk_enabled":
-		{
-			"default_value": true
-		},
-		"jerk_print":
-		{
-			"default_value": 12
-		},
-		"jerk_travel":
-		{
-			"default_value": 20,
-			"value": "jerk_print if magic_spiralize else 20"
-		},
+        "jerk_enabled":
+        {
+            "default_value": true
+        },
+        "jerk_print":
+        {
+            "default_value": 12
+        },
+        "jerk_travel":
+        {
+            "default_value": 20,
+            "value": "jerk_print if magic_spiralize else 20"
+        },
         "jerk_layer_0": { "value": "jerk_topbottom" },
         "jerk_prime_tower": { "value": "math.ceil(jerk_print * 15 / 25)" },
         "jerk_support": { "value": "math.ceil(jerk_print * 15 / 25)" },
@@ -195,7 +192,7 @@
         "jerk_topbottom": { "value": "math.ceil(jerk_print * 10 / 25)" },
         "jerk_wall": { "value": "math.ceil(jerk_print * 15 / 25)" },
         "jerk_wall_0": { "value": "math.ceil(jerk_wall * 6 / 10)" },
-		"jerk_travel_layer_0": { "value": "math.ceil(jerk_layer_0 * jerk_travel / jerk_print)" },
+        "jerk_travel_layer_0": { "value": "math.ceil(jerk_layer_0 * jerk_travel / jerk_print)" },
         "extruder_prime_pos_abs": { "default_value": false },
         "machine_extruder_start_pos_abs": { "default_value": false },
         "machine_extruder_start_pos_x": { "value": 0.0 },
@@ -203,9 +200,25 @@
         "machine_extruder_end_pos_abs": { "default_value": false },
         "machine_extruder_end_pos_x": { "value": 0.0 },
         "machine_extruder_end_pos_y": { "value": 0.0 },
-		"extruder_prime_pos_x": { "default_value": 0.0, "enabled": false },
+        "extruder_prime_pos_x": { "default_value": 0.0, "enabled": false },
         "extruder_prime_pos_y": { "default_value": 0.0, "enabled": false },
         "extruder_prime_pos_z": { "default_value": 0.0, "enabled": false },
+        "start_layers_at_same_position":
+        {
+            "default_value": false,
+            "enabled": false,
+            "value": false
+        },
+        "layer_start_x":
+        {
+            "default_value": 105.0,
+            "enabled": false
+        },
+        "layer_start_y":
+        {
+            "default_value": 27.0,
+            "enabled": false
+        },
         "prime_tower_position_x": {
             "default_value": 185
         },
@@ -217,8 +230,8 @@
                 [[-115,  112.5], [ -10,  112.5], [ -10,  72.5], [-115,  72.5]],
                 [[ 115,  112.5], [ 115,  72.5], [ 15,  72.5], [ 15,  112.5]],
                 [[-115, -112.5], [-115, -87.5], [ 115, -87.5], [ 115, -112.5]],
-				[[-115, 72.5], [-97, 72.5], [-97, -112.5], [-115, -112.5]]
+                [[-115, 72.5], [-97, 72.5], [-97, -112.5], [-115, -112.5]]
             ]
         }
-	}
+    }
 }
