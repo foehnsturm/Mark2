@@ -142,7 +142,7 @@
         },
         "machine_start_gcode" : {
             "default_value": "",
-            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"G21 ;metric values\\nG90 ;absolute positioning\\nM82 ;set extruder to absolute mode\\nM107 ;start with the fan off\\nM200 D0 T0 ;reset filament diameter\\nM200 D0 T1\\nG28 Z0; home all\\nG28 X0 Y0\\nG0 Z20 F2400 ;move the platform to 20mm\\nG92 E0 ;zero e-axis\\nT1 ; move to the 2th head\\nG0 Z20 F2400\\nG1 E9 F45 ;purge nozzle\\nG92 E0\\nG1 E-5.0 F1500 ; retract\\nG1 X90 Z0.01 F5000 ; move away from the prime poop\\nG1 X50 F9000 ; move away from the prime poop\\nG0 Z20 F2400\\nT0 ; move to the first head\\nG0 Z20 F2400\\nG92 E0\\nG1 E9 F45 ;purge nozzle\\nG92 E0\\nG1 E-5.0 F1500\\nG1 X60 Z0.01 F5000 ; move away from the prime poop\\nG1 X20 F9000\\nM400 ;finish all moves\\n;end of startup sequence\""
+            "value": "\"\"  if machine_gcode_flavor == \"UltiGCode\" else \"G21 ;metric values\\nG90 ;absolute positioning\\nM82 ;set extruder to absolute mode\\nM107 ;start with the fan off\\nM200 D0 T0 ;reset filament diameter\\nM200 D0 T1\\nG28 Z0; home all\\nG28 X0 Y0\\nG0 Z20 F2400 ;move the platform to 20mm\\nG92 E0\\nT1 ; move to the 2th head\\nG0 Z20 F2400\\nG92 E-7.0 ;prime distance\\nG1 E0 F45 ;purge nozzle\\nG1 E-5.1 F1500 ; retract\\nG1 X90 Z0.01 F5000 ; move away from the prime poop\\nG1 X50 F9000\\nG0 Z20 F2400\\nT0 ; move to the first head\\nG0 Z20 F2400\\nG92 E-7.0\\nG1 E0 F45 ;purge nozzle\\nG1 E-5.1 F1500\\nG1 X60 Z0.01 F5000 ; move away from the prime poop\\nG1 X20 F9000\\nM400 ;finish all moves\\nG92 E0\\n;end of startup sequence\\n\""
         },
         "machine_end_gcode" : {
             "default_value": "",
